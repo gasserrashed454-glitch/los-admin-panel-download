@@ -54,6 +54,7 @@ def load_config():
             return json.load(fh)
     except Exception:
         return {"hotkey": "f8", "prefix": "", "auto_paste": True,
+                "open_on_start": True,
                 "categories": [{"name": "MAIN BROADCASTS",
                                 "items": ["message broadcast @all hello"]}]}
 
@@ -423,4 +424,13 @@ class Overlay(object):
 
 
 if __name__ == "__main__":
-    Overlay(load_config()).run()
+    try:
+        Overlay(load_config()).run()
+    except Exception as exc:
+        log_path = os.path.join(os.path.dirname(sys.executable), "LOS_Admin_Panel_error.log")
+        try:
+            with open(log_path, "a", encoding="utf-8") as log:
+                log.write("%s: %s\n" % (type(exc).__name__, exc))
+        except Exception:
+            pass
+        raise
