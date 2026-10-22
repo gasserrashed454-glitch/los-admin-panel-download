@@ -179,7 +179,7 @@ class Overlay(object):
         self.auto_broadcast = tk.BooleanVar(value=False)
         self.anti_afk = tk.BooleanVar(value=False)
         self.auto_broadcast_interval = 8
-        self.broadcast_interval = tk.IntVar(value=self.auto_broadcast_interval)
+        self.broadcast_interval = tk.StringVar(value=str(self.auto_broadcast_interval))
         self._pasting = False
         self._afk_key = None
         self.main_broadcasts = []
@@ -223,7 +223,7 @@ class Overlay(object):
         tk.Frame(self.root, bg=LINE, height=1).pack(fill="x")
 
         # ---- footer (packed before the scroll area)
-        foot = tk.Frame(self.root, bg=PANEL, height=84)
+        foot = tk.Frame(self.root, bg=PANEL, height=112)
         foot.pack(side="bottom", fill="x")
         foot.pack_propagate(False)
 
@@ -243,14 +243,14 @@ class Overlay(object):
         controls = tk.Frame(foot, bg=PANEL)
         controls.pack(fill="x", padx=10, pady=(2, 4))
         self.auto_broadcast_button = tk.Checkbutton(
-            controls,             text="auto broadcast  (every 8 sec)",
+            controls, text="auto broadcast",
             variable=self.auto_broadcast, command=self._toggle_auto_broadcast,
             bg=PANEL, fg=MUTED, activebackground=PANEL,
             activeforeground=FG, selectcolor=PANEL,
             font=(FONT, 7), bd=0, highlightthickness=0, cursor="hand2",
             anchor="w"
         )
-        self.auto_broadcast_button.pack(side="left", fill="x", expand=True)
+        self.auto_broadcast_button.pack(side="left")
         self.anti_afk_button = tk.Checkbutton(
             controls, text="anti-AFK",
             variable=self.anti_afk, command=self._toggle_anti_afk,
@@ -259,25 +259,23 @@ class Overlay(object):
             font=(FONT, 7), bd=0, highlightthickness=0, cursor="hand2",
             anchor="e"
         )
-        self.anti_afk_button.pack(side="right")
-        self.interval_label = tk.Label(
-            controls, text="8s", bg=PANEL, fg=FG,
-            font=(FONT_BOLD, 7), width=3, anchor="e"
-        )
-        self.interval_label.pack(side="right", padx=(4, 0))
-        self.interval_slider = tk.Scale(
-            controls, from_=5, to=15, orient="horizontal",
-            variable=self.broadcast_interval, command=self._set_broadcast_interval,
-            showvalue=False, length=78, bg=PANEL, fg=MUTED,
-            troughcolor=CAT_BG, activebackground=FG,
-            highlightthickness=0, bd=0, sliderlength=12,
-            cursor="hand2"
-        )
-        self.interval_slider.pack(side="right", padx=(4, 0))
+        self.anti_afk_button.pack(side="left", padx=(8, 0))
+        interval_row = tk.Frame(foot, bg=PANEL)
+        interval_row.pack(fill="x", padx=10, pady=(0, 5))
         tk.Label(
-            controls, text="delay", bg=PANEL, fg=MUTED,
+            interval_row, text="broadcast interval (seconds)", bg=PANEL, fg=MUTED,
             font=(FONT, 7)
-        ).pack(side="right")
+        ).pack(side="left")
+        self.interval_entry = tk.Entry(
+            interval_row, textvariable=self.broadcast_interval,
+            width=7, justify="center", bg=CAT_BG, fg=FG,
+            insertbackground=FG, relief="flat", bd=0,
+            highlightthickness=1, highlightbackground=LINE,
+            highlightcolor=FG, font=(FONT_BOLD, 8)
+        )
+        self.interval_entry.pack(side="left", padx=(7, 0), ipady=2)
+        self.interval_entry.bind("<Return>", self._set_broadcast_interval)
+        self.interval_entry.bind("<FocusOut>", self._set_broadcast_interval)
 
         # ---- scrollable body
         body = tk.Frame(self.root, bg=BG)
@@ -354,9 +352,20 @@ class Overlay(object):
         else:
             self.set_status("AUTO BROADCAST OFF")
 
-    def _set_broadcast_interval(self, value):
-        self.auto_broadcast_interval = int(float(value))
-        self.interval_label.configure(text="%ss" % self.auto_broadcast_interval)
+    def _set_broadcast_interval(self, _event=None):
+        try:
+            interval = int(self.broadcast_interval.get().strip())
+        except (TypeError, ValueError):
+            self.broadcast_interval.set(str(self.auto_broadcast_interval))
+            self.set_status("INTERVAL MUST BE A WHOLE NUMBER")
+            return
+        if interval < 1:
+            self.broadcast_interval.set(str(self.auto_broadcast_interval))
+            self.set_status("INTERVAL MUST BE AT LEAST 1 SECOND")
+            return
+        self.auto_broadcast_interval = interval
+        self.broadcast_interval.set(str(interval))
+        self.set_status("BROADCAST INTERVAL SET TO %s SEC" % interval)
 
     def _auto_broadcast_tick(self):
         if not self.auto_broadcast.get():
