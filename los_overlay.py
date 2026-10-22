@@ -177,6 +177,9 @@ class Overlay(object):
         self.auto_broadcast = tk.BooleanVar(value=False)
         self.anti_afk = tk.BooleanVar(value=False)
         self.auto_broadcast_interval = 8
+        self.broadcast_interval = tk.IntVar(value=self.auto_broadcast_interval)
+        self._pasting = False
+        self._afk_key = None
         self.main_broadcasts = []
         for category in cfg.get("categories", []):
             if category.get("name", "").strip().upper() == "MAIN BROADCASTS":
@@ -255,6 +258,24 @@ class Overlay(object):
             anchor="e"
         )
         self.anti_afk_button.pack(side="right")
+        self.interval_label = tk.Label(
+            controls, text="8s", bg=PANEL, fg=FG,
+            font=(FONT_BOLD, 7), width=3, anchor="e"
+        )
+        self.interval_label.pack(side="right", padx=(4, 0))
+        self.interval_slider = tk.Scale(
+            controls, from_=5, to=15, orient="horizontal",
+            variable=self.broadcast_interval, command=self._set_broadcast_interval,
+            showvalue=False, length=78, bg=PANEL, fg=MUTED,
+            troughcolor=CAT_BG, activebackground=FG,
+            highlightthickness=0, bd=0, sliderlength=12,
+            cursor="hand2"
+        )
+        self.interval_slider.pack(side="right", padx=(4, 0))
+        tk.Label(
+            controls, text="delay", bg=PANEL, fg=MUTED,
+            font=(FONT, 7)
+        ).pack(side="right")
 
         # ---- scrollable body
         body = tk.Frame(self.root, bg=BG)
@@ -331,6 +352,10 @@ class Overlay(object):
         else:
             self.set_status("AUTO BROADCAST OFF")
 
+    def _set_broadcast_interval(self, value):
+        self.auto_broadcast_interval = int(float(value))
+        self.interval_label.configure(text="%ss" % self.auto_broadcast_interval)
+
     def _auto_broadcast_tick(self):
         if not self.auto_broadcast.get():
             return
@@ -354,17 +379,28 @@ class Overlay(object):
     def _anti_afk_tick(self):
         if not self.anti_afk.get():
             return
+        if self._pasting:
+            self.root.after(500, self._anti_afk_tick)
+            return
         if keyboard is not None:
             direction = self._afk_direction
             self._afk_direction = "s" if direction == "w" else "w"
             try:
                 keyboard.press(direction)
-                self.root.after(180, lambda: keyboard.release(direction))
+                self._afk_key = direction
+                self.root.after(180, self._release_afk_key)
             except Exception:
                 self.set_status("ANTI-AFK FAILED - RUN AS ADMIN")
                 self.anti_afk.set(False)
                 return
         self.root.after(5000, self._anti_afk_tick)
+
+    def _release_afk_key(self):
+        if self._afk_key is not None and keyboard is not None:
+            try:
+                keyboard.release(self._afk_key)
+            finally:
+                self._afk_key = None
 
     # -------------------------------------------------- panel slide
     def toggle_panel(self):
@@ -388,6 +424,12 @@ class Overlay(object):
         self.root.update_idletasks()
 
         if self.auto_paste.get() and keyboard is not None:
+            self._pasting = True
+            if self._afk_key is not None:
+                try:
+                    keyboard.release(self._afk_key)
+                finally:
+                    self._afk_key = None
             self.set_status("PASTING INTO ROBLOX...")
             threading.Thread(target=self._paste, args=(full,), daemon=True).start()
         else:
@@ -404,6 +446,11 @@ class Overlay(object):
             self._queue.append(lambda: self.set_status("SENT  \u2713"))
         except Exception:
             self._queue.append(lambda: self.set_status("PASTE FAILED - RUN AS ADMIN"))
+        finally:
+            self._queue.append(self._finish_paste)
+
+    def _finish_paste(self):
+        self._pasting = False
 
     # -------------------------------------------------- lifecycle
     def run(self):
