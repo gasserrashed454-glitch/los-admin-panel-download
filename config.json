@@ -1,98 +1,98 @@
 {
-  "hotkey": "f8",
-  "prefix": "",
-  "auto_paste": true,
-  "open_on_start": false,
-  "categories": [
-    {
-      "name": "MAIN BROADCASTS",
-      "items": [
-        "message broadcast @all Current Event • Realistic RP | Community code • ehlos",
-        "message broadcast @all Make sure to join our community server and invite your friends!",
-        "message broadcast @all Got any issues or questions? Contact the admins!",
-        "message broadcast @all Remember to always stop when admins red lights/sirens are on!",
-        "message broadcast @all Criminals may only be arrested, if caught in action!",
-        "message broadcast @all Always follow instructions from staff during RP. This keeps events fair and realistic for everyone.",
-        "message broadcast @all Emergency vehicles may use sirens/blue lights only in emergency",
-        "message broadcast @all Stop Sticks and Radar Guns are banned!",
-        "message broadcast @all Hear Sirens? Pull Over it could Be a staff.",
-        "message broadcast @all Someone Is RDMing? Call PD and say ‘Staff’ To Report them.",
-        "message broadcast @all Reminder: Please keep all roleplay realistic and follow server rules at all times.",
-        "message broadcast @all Respect ongoing scenes and avoid unnecessary interference."
-      ]
-    },
-    {
-      "name": "BORDER RP",
-      "items": [
-        "message broadcast @all 🎭 Keep all interactions at the border realistic and respect ongoing scenes.",
-        "message broadcast @all 🚫 Do not ram vehicles, barriers or officers at the border.",
-        "message broadcast @all 🚫 Do not attempt to bypass or jump the border checkpoint.",
-        "message broadcast @all ⚠️ RDM, VDM and unrealistic behavior at the border are prohibited.",
-        "message broadcast @all 🚓 All PD Units are asked to head to border to setup the border.",
-        "message broadcast @all ⚠️ Keep emergency lane clear.",
-        "message broadcast @all 🚗 Border officers may do car inspections at Osso parking lot.",
-        "message broadcast @all 📍 Border Location -",
-        "message broadcast @all 💥 Using guns at border is strictly prohibited!",
-        "message broadcast @all ❗ Bombing border is strictly prohibited!",
-        "message broadcast @all 👮 At least 3 border officers needed at border!",
-        "message broadcast @all 🚧 Border is closing in 2 minutes",
-        "message broadcast @all 🚧 Border is closing in 1 minute",
-        "message broadcast @all 🚧 Border is closed now. Police Officers clear it up and return to realistic RP.",
-        "message broadcast @all ✨ Thanks for joining our event! Return to Realistic RP ✅"
-      ]
-    },
-    {
-      "name": "COP VS CRIME",
-      "items": [
-        "message broadcast @all ⚔️ Cops VS Crims wins! Crims go to Hospital for 1st round. Cops please make convoy at PD parking",
-        "message broadcast @all 🔪 Crims go to Hospital. 👮 Cops please make convoy at PD parking behind admin car",
-        "message broadcast @all 👮 Cops please make convoy at PD parking behind admin car",
-        "message broadcast @all 🔪 Crims go to Hospital.",
-        "message broadcast @all 🚗 Convoy starts now!",
-        "message broadcast @all ❗ No overtaking in convoy!",
-        "message broadcast @all 👮 Cops are heading to Hospital now! Crims get ready",
-        "message broadcast @all 🏆 ... won the first round! For 2nd round crims go to Farm shop and cops go back to PD and refill",
-        "message broadcast @all 🔪 Crims go to Farm Shop!",
-        "message broadcast @all 👮 Cops please refill your guns and make convoy at PD parking!",
-        "message broadcast @all 👮 Cops are heading to Farm Shop now!",
-        "message broadcast @all 🏆 ... wins! For 3rd round crims go to Clothing store and cops go back to PD and refill guns",
-        "message broadcast @all 👮 Cops please refill your guns and make convoy at PD parking!",
-        "message broadcast @all 🔪 Crims go to Clothing Store!",
-        "message broadcast @all 👮 Cops are heading to Clothing Store!"
-      ]
-    },
-    {
-      "name": "PRESIDENT RP",
-      "items": [
-        "message broadcast @all 🕴️ President RP has won. Please stay seated, now I will pick 2 candidates for president.",
-        "message broadcast @all 🎤 I've picked two people and now I will give them 2 minutes to give their speech.",
-        "message broadcast @all 🗳️ Based on the speech given! Vote for president 1 … or 2 …",
-        "message broadcast @all 🏛️ ... has won the presidency. Please make a convoy at PD parking lot.",
-        "message broadcast @all 🚗 No taking over the convoy. Max convoy speed is 40km/h.",
-        "message broadcast @all 👮 Cops who don't want to be bodyguards are asked to come to PD parking and make convoy!",
-        "message broadcast @all 🏠 President has made it to the mansion. Police please secure the area.",
-        "message broadcast @all ❗ President may not use gun"
-      ]
-    },
-    {
-      "name": "MEETING",
-      "items": [
-        "message broadcast @all 📢 Meeting is being hosted. Please come to PD meeting room.",
-        "message broadcast @all ❗ Bombing, killing and cuffing is strictly forbidden while meeting!",
-        "message broadcast @all 🚗 Please park at PD parking, not in the middle of the road. Thank you.",
-        "message broadcast @all ⏳ Meeting starts in 5 minutes. Everyone come to PD meeting room.",
-        "message broadcast @all ⏳ Meeting starts in 4 minutes. Everyone come to PD meeting room.",
-        "message broadcast @all ⏳ Meeting starts in 3 minutes. Everyone come to PD meeting room.",
-        "message broadcast @all ⏳ Meeting starts in 2 minutes. Everyone come to PD meeting room.",
-        "message broadcast @all ⏳ Meeting starts in 1 minute. Everyone come to PD meeting room.",
-        "message broadcast @all 🚨 Meeting starts now. Everyone come to meeting room now!",
-        "message broadcast @all 🗳️ Please Vote for RP: 1 Realistic, 2 Border, 3 President, 4 Special RP",
-        "message broadcast @all 🎭 Realistic RP wins! Have fun and roleplay!",
-        "message broadcast @all 🏆 Special RP wins. Stay seated and vote for a type of special RP.",
-        "message broadcast @all 🗳️ Please vote: 1 Car meet, 2 Car race, 3 Boxing Club, 4 Cops VS Crims",
-        "message broadcast @all 🚧 Border wins, Please stay seated to choose LOC!",
-        "message broadcast @all 📍 Vote for Border LOC 1• Osso Fuel 2• Areas Bridge 3• Bank"
-      ]
-    }
-  ]
+    "hotkey":  "f8",
+    "prefix":  "",
+    "auto_paste":  true,
+    "open_on_start":  true,
+    "categories":  [
+                       {
+                           "name":  "MAIN BROADCASTS",
+                           "items":  [
+                                         "message broadcast @all Current Event • Realistic RP | Community code • ehlos",
+                                         "message broadcast @all Make sure to join our community server and invite your friends!",
+                                         "message broadcast @all Got any issues or questions? Contact the admins!",
+                                         "message broadcast @all Remember to always stop when admins red lights/sirens are on!",
+                                         "message broadcast @all Criminals may only be arrested, if caught in action!",
+                                         "message broadcast @all Always follow instructions from staff during RP. This keeps events fair and realistic for everyone.",
+                                         "message broadcast @all Emergency vehicles may use sirens/blue lights only in emergency",
+                                         "message broadcast @all Stop Sticks and Radar Guns are banned!",
+                                         "message broadcast @all Hear Sirens? Pull Over it could Be a staff.",
+                                         "message broadcast @all Someone Is RDMing? Call PD and say ‘Staff’ To Report them.",
+                                         "message broadcast @all Reminder: Please keep all roleplay realistic and follow server rules at all times.",
+                                         "message broadcast @all Respect ongoing scenes and avoid unnecessary interference."
+                                     ]
+                       },
+                       {
+                           "name":  "BORDER RP",
+                           "items":  [
+                                         "message broadcast @all 🎭 Keep all interactions at the border realistic and respect ongoing scenes.",
+                                         "message broadcast @all 🚫 Do not ram vehicles, barriers or officers at the border.",
+                                         "message broadcast @all 🚫 Do not attempt to bypass or jump the border checkpoint.",
+                                         "message broadcast @all ⚠️ RDM, VDM and unrealistic behavior at the border are prohibited.",
+                                         "message broadcast @all 🚓 All PD Units are asked to head to border to setup the border.",
+                                         "message broadcast @all ⚠️ Keep emergency lane clear.",
+                                         "message broadcast @all 🚗 Border officers may do car inspections at Osso parking lot.",
+                                         "message broadcast @all 📍 Border Location -",
+                                         "message broadcast @all 💥 Using guns at border is strictly prohibited!",
+                                         "message broadcast @all ❗ Bombing border is strictly prohibited!",
+                                         "message broadcast @all 👮 At least 3 border officers needed at border!",
+                                         "message broadcast @all 🚧 Border is closing in 2 minutes",
+                                         "message broadcast @all 🚧 Border is closing in 1 minute",
+                                         "message broadcast @all 🚧 Border is closed now. Police Officers clear it up and return to realistic RP.",
+                                         "message broadcast @all ✨ Thanks for joining our event! Return to Realistic RP ✅"
+                                     ]
+                       },
+                       {
+                           "name":  "COP VS CRIME",
+                           "items":  [
+                                         "message broadcast @all ⚔️ Cops VS Crims wins! Crims go to Hospital for 1st round. Cops please make convoy at PD parking",
+                                         "message broadcast @all 🔪 Crims go to Hospital. 👮 Cops please make convoy at PD parking behind admin car",
+                                         "message broadcast @all 👮 Cops please make convoy at PD parking behind admin car",
+                                         "message broadcast @all 🔪 Crims go to Hospital.",
+                                         "message broadcast @all 🚗 Convoy starts now!",
+                                         "message broadcast @all ❗ No overtaking in convoy!",
+                                         "message broadcast @all 👮 Cops are heading to Hospital now! Crims get ready",
+                                         "message broadcast @all 🏆 ... won the first round! For 2nd round crims go to Farm shop and cops go back to PD and refill",
+                                         "message broadcast @all 🔪 Crims go to Farm Shop!",
+                                         "message broadcast @all 👮 Cops please refill your guns and make convoy at PD parking!",
+                                         "message broadcast @all 👮 Cops are heading to Farm Shop now!",
+                                         "message broadcast @all 🏆 ... wins! For 3rd round crims go to Clothing store and cops go back to PD and refill guns",
+                                         "message broadcast @all 👮 Cops please refill your guns and make convoy at PD parking!",
+                                         "message broadcast @all 🔪 Crims go to Clothing Store!",
+                                         "message broadcast @all 👮 Cops are heading to Clothing Store!"
+                                     ]
+                       },
+                       {
+                           "name":  "PRESIDENT RP",
+                           "items":  [
+                                         "message broadcast @all 🕴️ President RP has won. Please stay seated, now I will pick 2 candidates for president.",
+                                         "message broadcast @all 🎤 I\u0027ve picked two people and now I will give them 2 minutes to give their speech.",
+                                         "message broadcast @all 🗳️ Based on the speech given! Vote for president 1 … or 2 …",
+                                         "message broadcast @all 🏛️ ... has won the presidency. Please make a convoy at PD parking lot.",
+                                         "message broadcast @all 🚗 No taking over the convoy. Max convoy speed is 40km/h.",
+                                         "message broadcast @all 👮 Cops who don\u0027t want to be bodyguards are asked to come to PD parking and make convoy!",
+                                         "message broadcast @all 🏠 President has made it to the mansion. Police please secure the area.",
+                                         "message broadcast @all ❗ President may not use gun"
+                                     ]
+                       },
+                       {
+                           "name":  "MEETING",
+                           "items":  [
+                                         "message broadcast @all 📢 Meeting is being hosted. Please come to PD meeting room.",
+                                         "message broadcast @all ❗ Bombing, killing and cuffing is strictly forbidden while meeting!",
+                                         "message broadcast @all 🚗 Please park at PD parking, not in the middle of the road. Thank you.",
+                                         "message broadcast @all ⏳ Meeting starts in 5 minutes. Everyone come to PD meeting room.",
+                                         "message broadcast @all ⏳ Meeting starts in 4 minutes. Everyone come to PD meeting room.",
+                                         "message broadcast @all ⏳ Meeting starts in 3 minutes. Everyone come to PD meeting room.",
+                                         "message broadcast @all ⏳ Meeting starts in 2 minutes. Everyone come to PD meeting room.",
+                                         "message broadcast @all ⏳ Meeting starts in 1 minute. Everyone come to PD meeting room.",
+                                         "message broadcast @all 🚨 Meeting starts now. Everyone come to meeting room now!",
+                                         "message broadcast @all 🗳️ Please Vote for RP: 1 Realistic, 2 Border, 3 President, 4 Special RP",
+                                         "message broadcast @all 🎭 Realistic RP wins! Have fun and roleplay!",
+                                         "message broadcast @all 🏆 Special RP wins. Stay seated and vote for a type of special RP.",
+                                         "message broadcast @all 🗳️ Please vote: 1 Car meet, 2 Car race, 3 Boxing Club, 4 Cops VS Crims",
+                                         "message broadcast @all 🚧 Border wins, Please stay seated to choose LOC!",
+                                         "message broadcast @all 📍 Vote for Border LOC 1• Osso Fuel 2• Areas Bridge 3• Bank"
+                                     ]
+                       }
+                   ]
 }
