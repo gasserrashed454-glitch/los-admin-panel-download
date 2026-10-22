@@ -9,6 +9,8 @@ EDIT   : config.json  (add/remove categories & messages, change hotkey)
 """
 
 import json
+import ctypes
+import ctypes.wintypes
 import os
 import sys
 import threading
@@ -443,11 +445,28 @@ class Overlay(object):
             keyboard.send("ctrl+v")    # paste command (emoji-safe)
             time.sleep(0.4)
             keyboard.send("enter")     # send
+            time.sleep(0.35)
+            self._click_foreground_center()
             self._queue.append(lambda: self.set_status("SENT  \u2713"))
         except Exception:
             self._queue.append(lambda: self.set_status("PASTE FAILED - RUN AS ADMIN"))
         finally:
             self._queue.append(self._finish_paste)
+
+    def _click_foreground_center(self):
+        """Return focus to the game and close the Roblox chat input."""
+        user32 = ctypes.windll.user32
+        window = user32.GetForegroundWindow()
+        if not window:
+            return
+        rect = ctypes.wintypes.RECT()
+        if not user32.GetWindowRect(window, ctypes.byref(rect)):
+            return
+        center_x = (rect.left + rect.right) // 2
+        center_y = (rect.top + rect.bottom) // 2
+        user32.SetCursorPos(center_x, center_y)
+        user32.mouse_event(0x0002, 0, 0, 0, 0)
+        user32.mouse_event(0x0004, 0, 0, 0, 0)
 
     def _finish_paste(self):
         self._pasting = False
