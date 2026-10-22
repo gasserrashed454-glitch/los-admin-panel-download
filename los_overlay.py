@@ -176,7 +176,7 @@ class Overlay(object):
         self.auto_paste = tk.BooleanVar(value=bool(cfg.get("auto_paste", True)))
         self.auto_broadcast = tk.BooleanVar(value=False)
         self.anti_afk = tk.BooleanVar(value=False)
-        self.auto_broadcast_interval = 5
+        self.auto_broadcast_interval = 8
         self.main_broadcasts = []
         for category in cfg.get("categories", []):
             if category.get("name", "").strip().upper() == "MAIN BROADCASTS":
@@ -238,7 +238,7 @@ class Overlay(object):
         controls = tk.Frame(foot, bg=PANEL)
         controls.pack(fill="x", padx=10, pady=(2, 4))
         self.auto_broadcast_button = tk.Checkbutton(
-            controls, text="auto broadcast  (every 5 sec)",
+            controls,             text="auto broadcast  (every 8 sec)",
             variable=self.auto_broadcast, command=self._toggle_auto_broadcast,
             bg=PANEL, fg=MUTED, activebackground=PANEL,
             activeforeground=FG, selectcolor=PANEL,
@@ -326,7 +326,7 @@ class Overlay(object):
                 self.set_status("NO MAIN BROADCASTS CONFIGURED")
                 return
             self._broadcast_index = 0
-            self.set_status("AUTO BROADCAST ON  \u2022  EVERY 5 SEC")
+            self.set_status("AUTO BROADCAST ON  \u2022  EVERY 8 SEC")
             self._auto_broadcast_tick()
         else:
             self.set_status("AUTO BROADCAST OFF")
@@ -395,11 +395,11 @@ class Overlay(object):
 
     def _paste(self, _text):
         try:
-            time.sleep(0.05)
+            time.sleep(0.25)
             keyboard.send("f2")        # open Roblox chat
-            time.sleep(0.32)
+            time.sleep(0.6)
             keyboard.send("ctrl+v")    # paste command (emoji-safe)
-            time.sleep(0.16)
+            time.sleep(0.4)
             keyboard.send("enter")     # send
             self._queue.append(lambda: self.set_status("SENT  \u2713"))
         except Exception:
